@@ -1,0 +1,516 @@
+<div class="tab-content" id="technical-content">
+    <div class="section">
+        <div class="highlight-box">
+            <p><strong>This technical architecture represents successful implementation of industrial-grade environmental monitoring using professional SCADA methodology.</strong> The system demonstrates sophisticated three-layer monitoring architecture with professional alarm management, real-time data acquisition, and robust communication infrastructure following European environmental monitoring standards.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🏗️">System Architecture Deep Dive</h2>
+        <p>The project implementation follows professional organization principles with clear separation of concerns across three distinct monitoring domains:</p>
+        
+        <div class="alert alert-success">
+            <strong>Professional Node Structure:</strong> AGENT/OBJECTS/ with RealTime/, SystemHealth/, FieldDeviceHealth/, and CommunicationHealth/ logical grouping enables efficient system navigation and maintenance.
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>📡 Hardware Integration</h3>
+                <p><strong>RHT Sensor:</strong> Novus Climate sensor with wireless communication<br>
+                <strong>Gateway:</strong> GW-01 ModBus RTU to OPC UA conversion<br>
+                <strong>Network:</strong> Ethernet connectivity established<br>
+                <strong>Performance:</strong> >99% data capture rate</p>
+            </div>
+            <div class="card">
+                <h3>💻 Software Implementation</h3>
+                <p><strong>Platform:</strong> ATVISE 3.11.0 SCADA optimized configuration<br>
+                <strong>Alarms:</strong> Native condition system with proper priorities<br>
+                <strong>Monitoring:</strong> Multi-box architecture operational<br>
+                <strong>Response:</strong> <500ms real-time performance</p>
+            </div>
+            <div class="card">
+                <h3>🔄 Communication Protocols</h3>
+                <p><strong>ModBus RTU:</strong> RS485 industrial communication<br>
+                <strong>OPC UA:</strong> Modern SCADA protocol integration<br>
+                <strong>Conversion:</strong> Professional gateway implementation<br>
+                <strong>Reliability:</strong> Continuous operation monitoring</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🔧">Hardware Integration Layer</h2>
+        <p>Professional-grade environmental monitoring foundation with comprehensive device specifications and integration capabilities:</p>
+        
+        <div class="hardware-grid">
+            <div class="hardware-card sensor-card">
+                <div class="hardware-header">
+                    <div class="hardware-icon">🌡️</div>
+                    <div class="hardware-title">Novus RHT Climate Sensor</div>
+                </div>
+                <p>Professional-grade environmental monitoring foundation with high-precision measurements across industrial operating ranges.</p>
+
+                <h4>📊 Measurement Capabilities</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Temperature Range</div>
+                        <div class="spec-value">-20°C to +80°C<br>±0.2°C accuracy at 0-60°C</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Relative Humidity</div>
+                        <div class="spec-value">0-100% RH<br>±1.8% RH accuracy at 20-80%</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Calculated Properties</div>
+                        <div class="spec-value">Dew Point, Wet Bulb<br>Absolute Humidity</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Update Rate</div>
+                        <div class="spec-value">Configurable polling<br>Real-time response</div>
+                    </div>
+                </div>
+
+                <h4>🔌 Communication Interface</h4>
+                <ul class="monitoring-features">
+                    <li>Primary Protocol: RS485 ModBus RTU (Configurable baud rate and address)</li>
+                    <li>Secondary Outputs: Dual analog outputs (4-20mA/0-10VDC) for legacy integration</li>
+                    <li>Configuration: USB interface with NXperience software or front-panel keypad</li>
+                </ul>
+            </div>
+
+            <div class="hardware-card gateway-card">
+                <div class="hardware-header">
+                    <div class="hardware-icon">🔄</div>
+                    <div class="hardware-title">GW-01 Gateway Infrastructure</div>
+                </div>
+                <p>Industrial protocol conversion technology enabling seamless integration between ModBus RTU field devices and OPC UA-based SCADA infrastructure.</p>
+
+                <h4>⚙️ Gateway Capabilities</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Protocol Translation</div>
+                        <div class="spec-value">Automatic ModBus RTU<br>to OPC UA conversion</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Connection Management</div>
+                        <div class="spec-value">Persistent monitoring<br>Auto-reconnection</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Data Buffering</div>
+                        <div class="spec-value">Local storage during<br>communication interruptions</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Network Interface</div>
+                        <div class="spec-value">Ethernet connectivity<br>Industrial reliability</div>
+                    </div>
+                </div>
+
+                <h4>🌐 Integration Benefits</h4>
+                <ul class="monitoring-features">
+                    <li>Standardized data mapping with automatic protocol conversion</li>
+                    <li>Persistent communication monitoring with failure detection</li>
+                    <li>Data integrity assurance during network interruptions</li>
+                    <li>Simplified SCADA integration through OPC UA standards</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="📊">ATVISE Node Structure & Variable Implementation</h2>
+        <p>The hierarchical organization makes system navigation intuitive and maintenance straightforward with comprehensive variable type implementation:</p>
+        
+        <div class="alert alert-info">
+            <strong>Professional Organization:</strong> This structure demonstrates professional node organization with logical grouping of related components, enabling efficient system navigation and maintenance - exactly how real industrial SCADA systems are organized.
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>📈 Data Variables</h3>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Float Variables</div>
+                        <div class="spec-value">Real-time sensor measurements with IEEE 754 precision for temperature, humidity, and performance metrics</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Boolean Variables</div>
+                        <div class="spec-value">Binary status indicators for communication health and device connectivity</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Integer Variables</div>
+                        <div class="spec-value">Discrete status codes and alarm priority levels using 0-2 scale for clear state indication</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">String Variables</div>
+                        <div class="spec-value">Human-readable status descriptions and alarm messages for operator clarity</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">DateTime Variables</div>
+                        <div class="spec-value">Timestamp tracking for data freshness validation and audit trail maintenance</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🔧 System Organization</h3>
+                <p><strong>RealTime/:</strong> Current sensor readings and alarm conditions<br>
+                <strong>SystemHealth/:</strong> SCADA platform monitoring metrics<br>
+                <strong>FieldDeviceHealth/:</strong> Sensor status and validation<br>
+                <strong>CommunicationHealth/:</strong> Network protocol monitoring</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🚨">Professional Alarm System Architecture</h2>
+        <p>One of the biggest technical breakthroughs was transitioning from manual status calculations to ATVISE's professional alarm infrastructure:</p>
+        
+        <div class="alert alert-warning">
+            <strong>Learning Evolution:</strong> Manual implementation provided essential foundation for understanding professional tools. The transition from amateur to professional alarm management represents significant technical growth.
+        </div>
+
+        <div class="alarm-architecture">
+            <h3>⚙️ ATVISE Alarm Condition Implementation</h3>
+            <p>The system utilizes ATVISE's native alarm infrastructure, completely replacing our initial manual status calculations with enterprise-grade alarm management. This was a major learning breakthrough that showed me how professional systems actually work.</p>
+
+            <div class="alarm-features">
+                <div class="alarm-feature discrete-alarms">
+                    <span class="feature-icon">🔗</span>
+                    <div class="feature-title">Discrete Alarms</div>
+                    <div class="feature-description">Boolean state changes for communication failures and device disconnections with instant notification</div>
+                </div>
+
+                <div class="alarm-feature limit-alarms">
+                    <span class="feature-icon">📊</span>
+                    <div class="feature-title">Limit Alarms</div>
+                    <div class="feature-description">Threshold-based monitoring for temperature and humidity ranges with configurable hysteresis</div>
+                </div>
+
+                <div class="alarm-feature priority-processing">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-title">Priority-Based Processing</div>
+                    <div class="feature-description">Four-level alarm hierarchy (Normal, Warning, Critical, Emergency) with visual differentiation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="monitoring-scripts">
+            <div class="script-card system-health">
+                <div class="script-header">
+                    <div class="script-icon">⚙️</div>
+                    <div class="script-title">Dynamic Threshold Management</div>
+                </div>
+                <p>Implementation of relative node references enabling runtime alarm limit modification without system restart.</p>
+                <ul class="monitoring-features">
+                    <li>Runtime threshold adjustments through OPC UA interface</li>
+                    <li>Temperature and humidity limits configurable during operation</li>
+                    <li>No system restart required for threshold changes</li>
+                    <li>Immediate alarm condition updates with new parameters</li>
+                </ul>
+            </div>
+
+            <div class="script-card communication-health">
+                <div class="script-header">
+                    <div class="script-icon">🔄</div>
+                    <div class="script-title">Alarm Suppression Logic</div>
+                </div>
+                <p>Hierarchical alarm dependencies preventing alarm flooding during cascade failures.</p>
+                <ul class="monitoring-features">
+                    <li>Parent-child alarm relationships for system components</li>
+                    <li>Automatic suppression of secondary alarms during primary failures</li>
+                    <li>Intelligent alarm prioritization during multiple fault conditions</li>
+                    <li>Clear operator guidance on root cause vs. symptoms</li>
+                </ul>
+            </div>
+
+            <div class="script-card device-health">
+                <div class="script-header">
+                    <div class="script-icon">📝</div>
+                    <div class="script-title">Acknowledgment Tracking</div>
+                </div>
+                <p>Operator interaction logging with timestamp and user identification for full audit trail.</p>
+                <ul class="monitoring-features">
+                    <li>User identification for all alarm acknowledgments</li>
+                    <li>Timestamp logging for regulatory compliance</li>
+                    <li>Alarm state history with transition tracking</li>
+                    <li>Comprehensive audit trail for system review</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="⚙️">Server-Side Monitoring Scripts</h2>
+        <div class="monitoring-scripts">
+            <div class="script-card system-health">
+                <div class="script-header">
+                    <div class="script-icon">🖥️</div>
+                    <div class="script-title">System Health Assessment</div>
+                </div>
+                <p>Weighted scoring methodology for comprehensive SCADA platform assessment with intelligent threshold analysis.</p>
+                <ul class="monitoring-features">
+                    <li>CPU performance evaluation with load balancing consideration</li>
+                    <li>Memory usage monitoring with available capacity tracking</li>
+                    <li>System response time analysis for performance optimization</li>
+                    <li>Weighted algorithm combining multiple performance metrics</li>
+                </ul>
+            </div>
+
+            <div class="script-card communication-health">
+                <div class="script-header">
+                    <div class="script-icon">🌐</div>
+                    <div class="script-title">Communication Infrastructure Monitoring</div>
+                </div>
+                <p>Multi-protocol layer tracking ensuring end-to-end connectivity validation and performance optimization.</p>
+                <ul class="monitoring-features">
+                    <li>ModBus RTU Layer: Slave device response monitoring with timeout detection</li>
+                    <li>OPC UA Layer: Server connection health with subscription status validation</li>
+                    <li>Network Layer: Latency measurement and packet loss tracking</li>
+                    <li>Protocol efficiency analysis for optimization opportunities</li>
+                </ul>
+            </div>
+
+            <div class="script-card device-health">
+                <div class="script-header">
+                    <div class="script-icon">📊</div>
+                    <div class="script-title">Field Device Health Validation</div>
+                </div>
+                <p>Comprehensive sensor validation including statistical analysis and communication reliability assessment.</p>
+                <ul class="monitoring-features">
+                    <li>Data Quality Assessment: Statistical analysis for anomaly detection</li>
+                    <li>Communication Validation: Regular poll cycles with failure tracking</li>
+                    <li>Threshold Monitoring: Sensor range validation within specifications</li>
+                    <li>Trend Analysis: Performance degradation detection over time</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🖥️">Browser-Side Visualization Engine</h2>
+        <div class="browser-visualization">
+            <h3>🖥️ Three-Box Monitoring Interface</h3>
+            <p>Our visualization implements professional three-box monitoring layout with real-time status indicators following industrial color standards:</p>
+
+            <div class="three-box-layout">
+                <div class="monitor-box box1">
+                    <div class="status-indicator"></div>
+                    <span class="box-icon">🖥️</span>
+                    <div class="box-title">SCADA Health</div>
+                    <div class="box-description">System performance metrics with CPU/memory utilization display</div>
+                </div>
+
+                <div class="monitor-box box2">
+                    <div class="status-indicator"></div>
+                    <span class="box-icon">📊</span>
+                    <div class="box-title">Field Devices</div>
+                    <div class="box-description">Sensor connectivity and data quality visualization</div>
+                </div>
+
+                <div class="monitor-box box3">
+                    <div class="status-indicator"></div>
+                    <span class="box-icon">🌐</span>
+                    <div class="box-title">Communications</div>
+                    <div class="box-description">Network infrastructure status with protocol health indicators</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🔗">Communication Protocol Implementation</h2>
+        <div class="protocol-grid">
+            <div class="protocol-card modbus-protocol">
+                <div class="protocol-header">
+                    <div class="protocol-icon">⚡</div>
+                    <div class="protocol-title">ModBus RTU Configuration</div>
+                </div>
+                <p>Optimized polling strategies for environmental monitoring applications with reliable serial communication.</p>
+
+                <h4>🔧 Device Configuration Settings</h4>
+                <table class="config-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Setting</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Slave Address</strong></td>
+                            <td>1-247 range (configurable)</td>
+                            <td>Device identification on RTU network</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Baud Rate</strong></td>
+                            <td>9600 bps</td>
+                            <td>Standard for environmental sensors</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Format</strong></td>
+                            <td>8-N-1</td>
+                            <td>8 data bits, no parity, 1 stop bit</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Polling Interval</strong></td>
+                            <td>5-second cycles</td>
+                            <td>Real-time monitoring without overwhelming network</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="protocol-card opcua-protocol">
+                <div class="protocol-header">
+                    <div class="protocol-icon">🔗</div>
+                    <div class="protocol-title">OPC UA Implementation</div>
+                </div>
+                <p>ATVISE platform provides comprehensive OPC UA server functionality with full compliance to industrial automation standards.</p>
+
+                <h4>⚙️ OPC UA Features Implemented</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Data Access (DA)</div>
+                        <div class="spec-value">Real-time variable access with subscription-based updates</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Alarms & Conditions (A&C)</div>
+                        <div class="spec-value">Professional alarm processing with acknowledgment tracking</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Historical Access (HA)</div>
+                        <div class="spec-value">Foundation for future data historization implementation</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Information Modeling</div>
+                        <div class="spec-value">Structured data representation with type definitions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🎯">European Standards Compliance Framework</h2>
+        <div class="compliance-timeline">
+            <h3>🎯 Standards Implementation Plan</h3>
+            <div class="compliance-grid">
+                <div class="compliance-card">
+                    <div class="compliance-standard">EN 16798-1 (Indoor Environmental Quality)</div>
+                    <div class="compliance-status">Foundation Established</div>
+                    <p>Our temperature and humidity monitoring provides the basic framework for indoor air quality assessment.</p>
+                    <ul class="implementation-steps">
+                        <li>Map current monitoring to indoor air quality parameters</li>
+                        <li>Establish documentation framework for compliance claims</li>
+                        <li>Create measurement uncertainty calculations</li>
+                        <li>Develop calibration procedure documentation</li>
+                    </ul>
+                </div>
+
+                <div class="compliance-card">
+                    <div class="compliance-standard">EN 17255-4 (Data Acquisition Systems)</div>
+                    <div class="compliance-status">Professional Alarm Foundation</div>
+                    <p>Our ATVISE professional alarm system provides the quality assurance foundation required by this standard.</p>
+                    <ul class="implementation-steps">
+                        <li>Design data acquisition audit trail prototype</li>
+                        <li>Plan metadata recording for measurement uncertainties</li>
+                        <li>Develop automated validation procedures</li>
+                        <li>Create performance verification protocols</li>
+                    </ul>
+                </div>
+
+                <div class="compliance-card">
+                    <div class="compliance-standard">EN 14181 (Automated Measuring Systems)</div>
+                    <div class="compliance-status">Quality Principles Recognized</div>
+                    <p>Our three-layer monitoring approach aligns with quality assurance principles for automated systems.</p>
+                    <ul class="implementation-steps">
+                        <li>Develop quality assurance checklist for sensor calibration</li>
+                        <li>Create automated measurement validation test plan</li>
+                        <li>Implement periodic performance testing protocols</li>
+                        <li>Establish traceability and audit trail systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="📋">Technical Specifications Summary</h2>
+        <p>Complete technical specification overview showing implementation status and readiness for future development:</p>
+
+        <div class="specs-summary">
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Specification</th>
+                        <th>Implementation Status</th>
+                        <th>Performance Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SCADA Platform</strong></td>
+                        <td>ATVISE 3.11.0 with OPC UA server</td>
+                        <td><span class="status-badge status-operational">✅ Operational</span></td>
+                        <td>Professional Grade</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Environmental Sensor</strong></td>
+                        <td>Novus RHT Climate WM (±0.2°C, ±1.8% RH)</td>
+                        <td><span class="status-badge status-operational">✅ Integrated</span></td>
+                        <td>Industrial Precision</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Communication Protocol</strong></td>
+                        <td>ModBus RTU to OPC UA conversion</td>
+                        <td><span class="status-badge status-operational">✅ Active</span></td>
+                        <td>Robust & Reliable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alarm System</strong></td>
+                        <td>Professional alarm conditions with priorities</td>
+                        <td><span class="status-badge status-operational">✅ Configured</span></td>
+                        <td>Enterprise Standard</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monitoring Architecture</strong></td>
+                        <td>Three-layer health assessment</td>
+                        <td><span class="status-badge status-operational">✅ Deployed</span></td>
+                        <td>Comprehensive Coverage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Historization</strong></td>
+                        <td>ATVISE HISTORY module</td>
+                        <td><span class="status-badge status-planned">🔄 Planned</span></td>
+                        <td>Ready for Implementation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile Interface</strong></td>
+                        <td>HTML5 responsive design</td>
+                        <td><span class="status-badge status-planned">🔄 Future Enhancement</span></td>
+                        <td>Architecture Ready</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multi-Sensor Support</strong></td>
+                        <td>Additional ModBus RTU devices</td>
+                        <td><span class="status-badge status-planned">🔄 Scalability Ready</span></td>
+                        <td>247 Device Capability</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <a href="#timeline" class="link-button" onclick="TabManager.switchTab('timeline')">→ View Development Timeline</a>
+        <a href="#status" class="link-button" onclick="TabManager.switchTab('status')">→ View System Status</a>
+    </div>
+
+    <div class="section">
+        <h2 data-icon="🎓">Learning Insights</h2>
+        <p>This architecture demonstrates the successful progression from educational exploration to professional SCADA implementation:</p>
+        
+        <div class="alert alert-success">
+            <strong>Key Achievement:</strong> The project successfully bridges academic learning with industrial automation practices, providing practical experience in industrial communication protocols, professional SCADA alarm management, and multi-layer system architecture design.
+        </div>
+    </div>
+</div>

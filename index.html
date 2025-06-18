@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Environmental Monitor - ATVISE Project</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>Office Environmental Monitor - an ATVISE Project</h1>
+        <div class="subtitle">
+            <span id="dynamic-subtitle">Project Summary</span>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-navigation">
+        <div class="tab-container">
+            <button class="tab-button active" data-tab="summary" data-subtitle="Project Summary">
+                📊 Project Summary
+            </button>
+            <button class="tab-button" data-tab="technical" data-subtitle="Technical Architecture">
+                🏗️ Technical Architecture
+            </button>
+            <button class="tab-button" data-tab="timeline" data-subtitle="Development Timeline">
+                📅 Development Timeline
+            </button>
+            <button class="tab-button" data-tab="status" data-subtitle="System Status">
+                ⚡ System Status
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <main class="content-container">
+        <!-- Tab content will be loaded here by JavaScript -->
+        <div id="tab-content-area">
+            <!-- Loading indicator -->
+            <div class="loading-indicator">
+                <div class="loading-spinner"></div>
+                <p>Loading content...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="./assets/js/utils.js"></script>
+    <script src="./assets/js/content-loader.js"></script>
+    <script src="./assets/js/tab-manager.js"></script>
+    
+    <!-- Initialize Application -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ContentLoader.init();
+            TabManager.init();
+        });
+    </script>
+</body>
+</html>

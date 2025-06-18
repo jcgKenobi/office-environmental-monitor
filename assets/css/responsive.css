@@ -1,0 +1,610 @@
+/* Responsive Design - Mobile First Approach */
+
+/* Base styles (mobile first) are already defined in main.css and components.css */
+
+/* Small tablets and large phones (landscape) */
+@media (min-width: 576px) {
+    .content-container {
+        padding: var(--spacing-xxl) var(--spacing-xl);
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hardware-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .protocol-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .alarm-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .tab-button {
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: var(--font-size-base);
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .architecture-boxes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .hardware-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+    
+    .protocol-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    
+    .compliance-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .alarm-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Timeline responsive adjustments */
+    .timeline-item {
+        width: 50%;
+        padding: 0 30px;
+    }
+    
+    .timeline-item.left {
+        left: 0;
+        text-align: right;
+    }
+    
+    .timeline-item.right {
+        left: 50%;
+        text-align: left;
+    }
+    
+    .timeline::before {
+        left: 50%;
+    }
+    
+    .timeline-marker {
+        position: absolute;
+        top: 30px;
+    }
+    
+    .timeline-item.left .timeline-marker {
+        right: -42px;
+    }
+    
+    .timeline-item.right .timeline-marker {
+        left: -42px;
+    }
+    
+    /* Data flow horizontal on tablets */
+    .flow-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .flow-arrow {
+        transform: none;
+    }
+}
+
+/* Small desktops and large tablets */
+@media (min-width: 992px) {
+    .content-container {
+        padding: var(--spacing-xxl) var(--spacing-xl);
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .hardware-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .protocol-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .compliance-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    
+    .alarm-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .three-box-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Enhanced hover effects for desktop */
+    .card:hover,
+    .metric-card:hover,
+    .arch-box:hover,
+    .hardware-card:hover,
+    .protocol-card:hover,
+    .compliance-card:hover,
+    .alarm-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+    }
+    
+    .flow-step:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+    }
+    
+    /* Desktop-specific timeline enhancements */
+    .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+    }
+}
+
+/* Large desktops */
+@media (min-width: 1200px) {
+    .content-container {
+        max-width: 1200px;
+        padding: var(--spacing-xxl) var(--spacing-lg);
+    }
+    
+    .header {
+        padding: 50px var(--spacing-lg) var(--spacing-xl);
+    }
+    
+    .hardware-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xxl);
+    }
+    
+    .protocol-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xxl);
+    }
+    
+    .compliance-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .alarm-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .timeline-container {
+        padding: 50px;
+    }
+    
+    /* Enhanced spacing for large screens */
+    .section {
+        margin-bottom: 50px;
+    }
+    
+    .specs-table th,
+    .specs-table td,
+    .config-table th,
+    .config-table td {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1400px) {
+    .content-container {
+        max-width: 1400px;
+    }
+    
+    .hardware-grid,
+    .protocol-grid {
+        gap: 40px;
+    }
+    
+    .compliance-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xxl);
+    }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 767px) {
+    /* Stack all grid layouts */
+    .card-grid,
+    .metrics-grid,
+    .architecture-boxes,
+    .hardware-grid,
+    .protocol-grid,
+    .compliance-grid,
+    .alarm-grid,
+    .three-box-layout {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Timeline mobile adjustments */
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding: 0 var(--spacing-md);
+        margin: var(--spacing-xl) 0;
+    }
+    
+    .timeline::before {
+        left: var(--spacing-md);
+    }
+    
+    .timeline-marker {
+        left: 3px !important;
+        right: auto !important;
+    }
+    
+    /* Mobile data flow */
+    .flow-steps {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+        align-self: center;
+    }
+    
+    .flow-step {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    /* Mobile table responsiveness */
+    .specs-table,
+    .config-table {
+        font-size: var(--font-size-sm);
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .specs-table th,
+    .specs-table td,
+    .config-table th,
+    .config-table td {
+        padding: var(--spacing-sm);
+        min-width: 120px;
+    }
+    
+    /* Mobile-specific component adjustments */
+    .hardware-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .protocol-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .spec-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .alarm-features {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .progress-comparison {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    /* Mobile expandable sections */
+    .expand-trigger {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .expand-content.active {
+        padding: var(--spacing-md);
+    }
+    
+    /* Mobile-friendly buttons */
+    .link-button {
+        display: block;
+        text-align: center;
+        margin: var(--spacing-sm) 0;
+        padding: var(--spacing-md);
+    }
+    
+    /* Mobile tab navigation */
+    .tab-container {
+        padding: 0 var(--spacing-sm);
+        gap: var(--spacing-xs);
+    }
+    
+    .tab-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+        min-width: auto;
+        flex: 1;
+        text-align: center;
+    }
+    
+    /* Mobile alerts and highlights */
+    .alert {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        font-size: var(--font-size-sm);
+    }
+    
+    .highlight-box {
+        padding: var(--spacing-lg);
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .content-container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+    
+    .header {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+    
+    .header .subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Very small mobile adjustments */
+    .section h2 {
+        font-size: 1.3rem;
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-xs);
+    }
+    
+    .card,
+    .metric-card,
+    .hardware-card,
+    .protocol-card,
+    .compliance-card,
+    .alarm-card {
+        padding: var(--spacing-md);
+    }
+    
+    .timeline-container {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .timeline-content {
+        padding: var(--spacing-md);
+    }
+    
+    .phase-title {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-xs);
+    }
+    
+    .phase-icon {
+        margin: 0 auto var(--spacing-xs);
+    }
+    
+    /* Compact metric cards for very small screens */
+    .metric-value {
+        font-size: 2rem;
+    }
+    
+    .metric-label {
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Small screen data flow */
+    .data-flow-enhanced {
+        padding: var(--spacing-md);
+    }
+    
+    .flow-step {
+        padding: var(--spacing-sm);
+    }
+    
+    .flow-step-title {
+        font-size: var(--font-size-xs);
+    }
+    
+    .flow-step-desc {
+        font-size: var(--font-size-xs);
+    }
+    
+    /* Compact tables for small screens */
+    .threshold-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm) 0;
+    }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .tab-button {
+        min-height: 44px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .expand-trigger {
+        min-height: 44px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .link-button {
+        min-height: 44px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    /* Remove hover effects for touch devices */
+    .card:hover,
+    .metric-card:hover,
+    .arch-box:hover,
+    .hardware-card:hover,
+    .protocol-card:hover,
+    .compliance-card:hover,
+    .alarm-card:hover,
+    .flow-step:hover,
+    .timeline-content:hover {
+        transform: none;
+        box-shadow: var(--shadow);
+    }
+    
+    /* Add active states for touch feedback */
+    .card:active,
+    .metric-card:active,
+    .link-button:active,
+    .tab-button:active,
+    .expand-trigger:active {
+        transform: scale(0.98);
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure crisp rendering on high DPI displays */
+    .loading-spinner {
+        border-width: 2px;
+    }
+    
+    .timeline-marker {
+        border-width: 2px;
+    }
+    
+    .status-indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .header {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .content-container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .section {
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+/* Print optimizations for responsive content */
+@media print {
+    .hardware-grid,
+    .protocol-grid,
+    .compliance-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        break-inside: avoid;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        page-break-inside: avoid;
+        margin: var(--spacing-lg) 0;
+    }
+    
+    .timeline::before,
+    .timeline-marker {
+        display: none;
+    }
+    
+    .flow-steps {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        display: none;
+    }
+    
+    .expand-content {
+        max-height: none !important;
+        padding: var(--spacing-md) !important;
+        border: 1px solid var(--bg-darker) !important;
+        border-radius: var(--border-radius) !important;
+    }
+    
+    .expand-trigger {
+        display: none;
+    }
+}
+
+/* Accessibility enhancements for responsive design */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-content:hover,
+    .card:hover,
+    .metric-card:hover {
+        transform: none;
+    }
+}
+
+/* Force landscape message for very small screens if needed */
+@media (max-width: 320px) and (orientation: portrait) {
+    .rotate-message {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--text-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+    
+    .rotate-message.hidden {
+        display: none;
+    }
+}

@@ -1,0 +1,164 @@
+# Office Environmental Monitor - Git Ignore Rules
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor and IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-*
+*.sublime-project
+*.sublime-workspace
+
+# Node.js (if using build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build and Distribution
+dist/
+build/
+.tmp/
+.cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Archive Files
+*.zip
+*.tar.gz
+*.rar
+
+# CSS Preprocessor Output (if using Sass/Less)
+*.css.map
+*.sass.cache
+
+# Local Development
+.localhost/
+local/
+
+# Coverage Reports
+coverage/
+*.lcov
+
+# Dependency Directories
+bower_components/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Local configuration files
+config.local.js
+settings.local.json
+
+# Documentation build files
+docs/.vuepress/dist
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Vim
+*.swp
+*.swo
+
+# JetBrains IDEs
+.idea/
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Project specific ignores
+# (Add any project-specific files you don't want to track)
+
+# Keep important files (force include despite above rules)
+!.gitkeep
