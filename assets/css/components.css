@@ -235,8 +235,15 @@
 }
 
 @keyframes sparklineFlow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
 }
 
 .sparkline-label {
@@ -267,9 +274,17 @@
     box-shadow: var(--shadow-hover);
 }
 
-.arch-box.system { border-top-color: var(--success-color); }
-.arch-box.device { border-top-color: var(--info-color); }
-.arch-box.comm { border-top-color: var(--warning-color); }
+.arch-box.system {
+    border-top-color: var(--success-color);
+}
+
+.arch-box.device {
+    border-top-color: var(--info-color);
+}
+
+.arch-box.comm {
+    border-top-color: var(--warning-color);
+}
 
 .arch-box-icon {
     font-size: 2.5rem;
@@ -301,30 +316,36 @@
     z-index: 2;
 }
 
-.status-operational { 
-    background: var(--success-color); 
+.status-operational {
+    background: var(--success-color);
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
-.status-warning { 
+
+.status-warning {
     background: var(--warning-color);
     box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2);
 }
-.status-critical { 
+
+.status-critical {
     background: var(--primary-color);
     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
     animation: criticalPulse 2s infinite;
 }
-.status-planned { 
+
+.status-planned {
     background: var(--info-color);
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
 
 @keyframes criticalPulse {
-    0%, 100% { 
+
+    0%,
+    100% {
         box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
         transform: scale(1);
     }
-    50% { 
+
+    50% {
         box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.4);
         transform: scale(1.05);
     }
@@ -723,13 +744,16 @@
 }
 
 @keyframes pulse {
-    0%, 100% { 
-        opacity: 1; 
-        transform: scale(1); 
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
-    50% { 
-        opacity: 0.7; 
-        transform: scale(1.1); 
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
     }
 }
 
@@ -1107,49 +1131,49 @@
     .hardware-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .protocol-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .compliance-grid {
         grid-template-columns: 1fr;
     }
-    
+
     /* Updated: Alarm Features Mobile Layout */
     .alarm-features {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .flow-steps {
         flex-direction: column;
     }
-    
+
     .flow-arrow {
         transform: rotate(90deg);
     }
-    
+
     .timeline-item {
         width: 100%;
         left: 0 !important;
         text-align: left !important;
         padding: 0 15px;
     }
-    
+
     .timeline::before {
         left: 15px;
     }
-    
+
     .timeline-marker {
         left: 3px !important;
         right: auto !important;
     }
-    
+
     .progress-comparison {
         grid-template-columns: 1fr;
     }
-    
+
     .sparkline-container {
         height: 30px;
     }
@@ -1159,36 +1183,163 @@
     .spec-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .three-box-layout {
         grid-template-columns: 1fr;
     }
-    
+
     .alarm-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .config-table,
     .specs-table {
         font-size: 0.8rem;
     }
-    
+
     .config-table th,
     .config-table td,
     .specs-table th,
     .specs-table td {
         padding: 8px;
     }
-    
+
     /* Updated: Two-column layout for small screens */
     .alarm-features {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    
+
     .alarm-feature {
         flex-direction: column;
         text-align: center;
         gap: 10px;
+    }
+}
+
+* Clickable Week Card Enhancements */ .week-card.clickable-card {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.week-card.clickable-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.week-card.clickable-card:hover::before {
+    left: 100%;
+}
+
+.week-card.clickable-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-left-color: var(--primary-color);
+    border-left-width: 5px;
+}
+
+.week-card.clickable-card:active {
+    transform: translateY(-4px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Navigation Hint Styling */
+.card-nav-hint {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid var(--bg-darker);
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.week-card.clickable-card:hover .card-nav-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-arrow {
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.week-card.clickable-card:hover .nav-arrow {
+    transform: translateX(5px);
+}
+
+/* Add subtle pulse animation for better discoverability */
+@keyframes pulse-border {
+
+    0%,
+    100% {
+        border-left-color: var(--primary-color);
+        border-left-width: 4px;
+    }
+
+    50% {
+        border-left-color: var(--primary-hover);
+        border-left-width: 6px;
+    }
+}
+
+.week-card.clickable-card {
+    animation: pulse-border 3s ease-in-out infinite;
+    animation-delay: calc(var(--card-index, 0) * 0.5s);
+}
+
+.week-card.clickable-card:hover {
+    animation: none;
+}
+
+/* Responsive adjustments for week cards */
+@media (max-width: 768px) {
+    .week-card.clickable-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+
+    .card-nav-hint {
+        opacity: 1;
+        transform: translateY(0);
+        font-size: 0.8rem;
+    }
+
+    .week-card.clickable-card {
+        animation: none;
+        /* Disable pulse on mobile for better performance */
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .week-card.clickable-card {
+        animation: none;
+    }
+
+    .week-card.clickable-card:hover::before {
+        display: none;
+    }
+
+    .card-nav-hint {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .week-card.clickable-card:active {
+        transform: scale(0.98);
+        background: var(--primary-light);
     }
 }

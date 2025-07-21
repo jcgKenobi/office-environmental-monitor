@@ -86,148 +86,68 @@
 
     <div class="section">
         <h2 data-icon="🏗️">Three-Box Monitoring System Status</h2>
-        <p>Each monitoring box serves a distinct purpose and provides valuable insights into different aspects of our
-            system:</p>
+        <p>The monitoring system operates across three distinct domains, each providing specialized health assessment:</p>
 
-        <div class="card-grid">
-            <div class="card">
-                <h3>🖥️ System Health Monitor</h3>
-                <p><strong>Purpose:</strong> ATVISE platform performance monitoring with comprehensive system assessment
-                </p>
-                <div class="alert alert-success" style="margin: 15px 0; font-size: 0.9em;">
-                    <strong>Current Status:</strong> Fully operational with professional alarm integration
-                </div>
-                <p><strong>Monitoring Features:</strong></p>
-                <ul style="margin: 10px 0; padding-left: 20px;">
-                    <li>CPU Usage Monitoring - Real-time processor utilization tracking</li>
-                    <li>Memory Utilization Tracking - System resource management</li>
-                    <li>Service Status Verification - Critical service health checking</li>
-                    <li>Overall Health Scoring - Weighted performance assessment</li>
-                </ul>
+        <div class="alert alert-info">
+            <strong>System Architecture Overview:</strong> Each monitoring domain serves a specific purpose in ensuring comprehensive system reliability and performance assessment.
+        </div>
+
+        <div class="architecture-boxes">
+            <div class="arch-box system">
+                <span class="arch-box-icon">🖥️</span>
+                <div class="arch-box-title">System Health</div>
+                <div class="arch-box-desc">SCADA platform performance monitoring with comprehensive system assessment</div>
                 <span class="status-badge status-operational">✅ Fully Operational</span>
             </div>
-
-            <div class="card">
-                <h3>📊 Field Device Health Monitor</h3>
-                <p><strong>Purpose:</strong> RHT sensor performance monitoring ensuring reliable environmental data
-                    quality</p>
-                <div class="alert alert-success" style="margin: 15px 0; font-size: 0.9em;">
-                    <strong>Current Status:</strong> Active monitoring with real-time health evaluation
-                </div>
-                <p><strong>Monitoring Features:</strong></p>
-                <ul style="margin: 10px 0; padding-left: 20px;">
-                    <li>Sensor Communication Status - Connection reliability tracking</li>
-                    <li>Data Quality Assessment - Value validation and trending</li>
-                    <li>Response Time Monitoring - Performance benchmarking</li>
-                    <li>Range Validation - Operational limits verification</li>
-                </ul>
+            <div class="arch-box device">
+                <span class="arch-box-icon">📊</span>
+                <div class="arch-box-title">Field Device Health</div>
+                <div class="arch-box-desc">RHT sensor performance monitoring ensuring reliable environmental data quality</div>
                 <span class="status-badge status-operational">✅ Active Monitoring</span>
             </div>
-
-            <div class="card">
-                <h3>🌐 Communication Health Monitor</h3>
-                <p><strong>Purpose:</strong> Network communication reliability with protocol conversion monitoring</p>
-                <div class="alert alert-success" style="margin: 15px 0; font-size: 0.9em;">
-                    <strong>Current Status:</strong> Connection stable with continuous protocol conversion
-                </div>
-                <p><strong>Monitoring Features:</strong></p>
-                <ul style="margin: 10px 0; padding-left: 20px;">
-                    <li>ModBus RTU Performance - RS485 communication quality</li>
-                    <li>OPC UA Query Response - Modern protocol efficiency</li>
-                    <li>Gateway Status Monitoring - Conversion reliability</li>
-                    <li>Network Error Aggregation - Connection stability assessment</li>
-                </ul>
+            <div class="arch-box comm">
+                <span class="arch-box-icon">🌐</span>
+                <div class="arch-box-title">Communication Health</div>
+                <div class="arch-box-desc">Network communication reliability with protocol conversion monitoring</div>
                 <span class="status-badge status-operational">✅ Connection Stable</span>
             </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2 data-icon="🚨">Professional Alarm System Configuration</h2>
-        <p>Current alarm thresholds and system status demonstrating professional alarm management implementation:</p>
-
-        <div class="alarm-grid">
-            <div class="alarm-card">
-                <h5>🌡️ Temperature Monitoring</h5>
-                <div class="threshold-item">
-                    <span>Critical High</span>
-                    <span class="threshold-value" style="color: #dc3545;">&gt;30°C</span>
-                </div>
-                <div class="threshold-item">
-                    <span>Warning High</span>
-                    <span class="threshold-value" style="color: #ffc107;">&gt;26°C ⚠️</span>
-                </div>
-                <div class="threshold-item">
-                    <span>Warning Low</span>
-                    <span class="threshold-value" style="color: #ffc107;">&lt;18°C</span>
-                </div>
-                <div class="threshold-item">
-                    <span>Critical Low</span>
-                    <span class="threshold-value" style="color: #dc3545;">&lt;15°C</span>
-                </div>
-                <div class="alert alert-warning" style="margin-top: 15px; font-size: 0.85em;">
-                    <strong>Currently Active:</strong> Warning High (27.98°C) - Working as expected!
-                </div>
-            </div>
-
-            <div class="alarm-card">
-                <h5>💧 Humidity Monitoring</h5>
-                <div class="threshold-item">
-                    <span>Critical High</span>
-                    <span class="threshold-value" style="color: #dc3545;">&gt;80%</span>
-                </div>
-                <div class="threshold-item">
-                    <span>Warning High</span>
-                    <span class="threshold-value" style="color: #ffc107;">&gt;70%</span>
-                </div>
-                <div class="threshold-item">
-                    <span>Warning Low</span>
-                    <span class="threshold-value" style="color: #ffc107;">&lt;30%</span>
-                </div>
-                <div class="threshold-item">
-                    <span>Critical Low</span>
-                    <span class="threshold-value" style="color: #dc3545;">&lt;20%</span>
-                </div>
-                <div class="alert alert-success" style="margin-top: 15px; font-size: 0.85em;">
-                    <strong>Status:</strong> Normal Operation (43.71%) - All good!
-                </div>
-            </div>
+        <div class="alert alert-success" style="margin-top: 20px;">
+            <strong>All Monitoring Domains Operational:</strong> System health, field devices, and communications are functioning within normal parameters.
+            <br><br>
+            <a href="#technical" class="link-button" onclick="TabManager.switchTab('technical')" style="margin-top: 10px; display: inline-block;">
+                🔧 View Configuration Details
+            </a>
         </div>
     </div>
 
     <div class="section">
-        <h2 data-icon="✅">Current Environmental Readings</h2>
-        <p>Live sensor data demonstrating real-time monitoring capabilities:</p>
+        <h2 data-icon="📈">Example Environmental Data</h2>
+        <div class="alert alert-warning">
+            <strong>Note:</strong> Example readings shown below - No live link from ATVISE App in this demonstration environment.
+        </div>
 
-        <div class="card-grid">
-            <div class="card">
-                <h3>🌡️ Temperature Monitoring</h3>
-                <p><strong>Current Reading:</strong> 27.98°C</p>
-                <p><strong>Status:</strong> Warning state - above normal threshold</p>
-                <p><strong>Operational Range:</strong> 10°C to 35°C</p>
-                <p><strong>Alarm Thresholds:</strong></p>
-                <ul style="margin: 10px 0; padding-left: 20px;">
-                    <li>Warning High: 28°C</li>
-                    <li>Critical High: 35°C</li>
-                    <li>Warning Low: 18°C</li>
-                    <li>Critical Low: 10°C</li>
-                </ul>
-                <span class="status-badge status-warning">⚠️ Warning State</span>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">27.98°C</div>
+                <div class="metric-label">Temperature Reading</div>
+                <p style="font-size: 0.8em; color: #ffc107;">Example: Warning State</p>
             </div>
-
-            <div class="card">
-                <h3>💧 Humidity Monitoring</h3>
-                <p><strong>Current Reading:</strong> 43.71% RH</p>
-                <p><strong>Status:</strong> Normal state - within acceptable range</p>
-                <p><strong>Operational Range:</strong> 15% to 85% RH</p>
-                <p><strong>Alarm Thresholds:</strong></p>
-                <ul style="margin: 10px 0; padding-left: 20px;">
-                    <li>Warning High: 70% RH</li>
-                    <li>Critical High: 85% RH</li>
-                    <li>Warning Low: 30% RH</li>
-                    <li>Critical Low: 15% RH</li>
-                </ul>
-                <span class="status-badge status-operational">✅ Normal State</span>
+            <div class="metric-card">
+                <div class="metric-value">43.71%</div>
+                <div class="metric-label">Humidity Reading</div>
+                <p style="font-size: 0.8em; color: #28a745;">Example: Normal State</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Active</div>
+                <div class="metric-label">Alarm Processing</div>
+                <p style="font-size: 0.8em; color: #28a745;">Professional management</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Stable</div>
+                <div class="metric-label">Communication</div>
+                <p style="font-size: 0.8em; color: #28a745;">ModBus RTU to OPC UA</p>
             </div>
         </div>
     </div>
@@ -249,10 +169,9 @@
             <div class="card">
                 <h3>🔧 Technical Performance</h3>
                 <p><strong>Data Capture Rate:</strong> >99% (regulatory compliance standard)<br>
-                    <strong>System Response Time:</strong>
-                    <500ms (real-time performance)<br>
-                        <strong>Alarm Acknowledgment:</strong> Functional workflow implementation<br>
-                        <strong>Multi-layer Monitoring:</strong> Operational across all domains
+                    <strong>System Response Time:</strong> <500ms (real-time performance)<br>
+                    <strong>Alarm Acknowledgment:</strong> Functional workflow implementation<br>
+                    <strong>Multi-layer Monitoring:</strong> Operational across all domains
                 </p>
             </div>
             <div class="card">
@@ -273,22 +192,18 @@
         <div class="card-grid">
             <div class="card">
                 <h3>📊 Data Historization</h3>
-                <p>Implementation of ATVISE HISTORY module for trend analysis and long-term data storage capabilities.
-                </p>
+                <p>Implementation of ATVISE HISTORY module for trend analysis and long-term data storage capabilities.</p>
                 <span class="status-badge status-planned">🔄 Planned Enhancement</span>
             </div>
             <div class="card">
                 <h3>📱 Mobile Optimization</h3>
-                <p>Complete HTML5 responsive design conversion from current SVG displays for improved mobile experience.
-                </p>
+                <p>Complete HTML5 responsive design conversion from current SVG displays for improved mobile experience.</p>
                 <span class="status-badge status-planned">🔄 Future Development</span>
             </div>
         </div>
 
-        <a href="#timeline" class="link-button" onclick="TabManager.switchTab('timeline')">→ View Development
-            History</a>
-        <a href="#technical" class="link-button" onclick="TabManager.switchTab('technical')">→ View Technical
-            Details</a>
+        <a href="#timeline" class="link-button" onclick="TabManager.switchTab('timeline')">→ View Development History</a>
+        <a href="#technical" class="link-button" onclick="TabManager.switchTab('technical')">→ View Technical Details</a>
     </div>
 
     <div class="section">

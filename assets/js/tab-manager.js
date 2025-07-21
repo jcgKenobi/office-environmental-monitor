@@ -1,4 +1,4 @@
-// Tab Manager for Office Environmental Monitor
+// Tab Manager for Office Environmental Monitor - Complete Enhanced Version
 
 const TabManager = {
 
@@ -345,6 +345,38 @@ const TabManager = {
 
         // Apply entrance animations to new content
         this.animateContentEntrance();
+
+        // Handle auto-expand functionality for timeline
+        if (data.tabId === 'timeline') {
+            this.handleTimelineAutoExpand();
+        }
+    },
+
+    /**
+     * Handle auto-expand functionality for timeline phases
+     */
+    handleTimelineAutoExpand() {
+        const targetPhase = sessionStorage.getItem('targetPhase');
+        if (targetPhase) {
+            // Clear the stored target
+            sessionStorage.removeItem('targetPhase');
+
+            // Find and expand the target phase
+            setTimeout(() => {
+                const targetElement = document.querySelector(`.timeline-item.${targetPhase} .expand-trigger`);
+                if (targetElement && !targetElement.classList.contains('active')) {
+                    targetElement.click();
+
+                    // Smooth scroll to the expanded section
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 300);
+                }
+            }, 200);
+        }
     },
 
     /**
@@ -496,5 +528,14 @@ window.switchTab = function (tabId) {
     TabManager.switchTab(tabId);
 };
 
-// Export TabManager to global scope (ADD THIS LINE)
+// Global function for timeline phase navigation (NEW FEATURE)
+window.navigateToTimelinePhase = function (phaseId) {
+    // Switch to timeline tab
+    TabManager.switchTab('timeline');
+
+    // Store the target phase for auto-expansion after tab loads
+    sessionStorage.setItem('targetPhase', phaseId);
+};
+
+// Export TabManager to global scope
 window.TabManager = TabManager;
