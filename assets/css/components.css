@@ -1343,3 +1343,38 @@
         background: var(--primary-light);
     }
 }
+
+/* Clickable Week Card Enhancements */
+.week-card.clickable-card {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.week-card.clickable-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-left-color: var(--primary-color);
+    border-left-width: 5px;
+}
+
+.card-nav-hint {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid var(--bg-darker);
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.week-card.clickable-card:hover .card-nav-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
