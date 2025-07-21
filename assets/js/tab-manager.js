@@ -356,26 +356,115 @@ const TabManager = {
      * Handle auto-expand functionality for timeline phases
      */
     handleTimelineAutoExpand() {
+        console.log('🔍 handleTimelineAutoExpand called');
+
         const targetPhase = sessionStorage.getItem('targetPhase');
+        console.log('🎯 Target phase from sessionStorage:', targetPhase);
+
         if (targetPhase) {
             // Clear the stored target
             sessionStorage.removeItem('targetPhase');
+            console.log('✅ Cleared targetPhase from sessionStorage');
 
             // Find and expand the target phase
             setTimeout(() => {
-                const targetElement = document.querySelector(`.timeline-item.${targetPhase} .expand-trigger`);
-                if (targetElement && !targetElement.classList.contains('active')) {
-                    targetElement.click();
+                console.log('🔍 Looking for selector:', `.timeline-item.${targetPhase} .expand-trigger`);
 
-                    // Smooth scroll to the expanded section
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }, 300);
+                // Debug: Check if timeline content exists
+                const timelineContent = document.getElementById('timeline-content');
+                console.log('📄 Timeline content found:', !!timelineContent);
+
+                // Debug: Check all timeline items
+                const allTimelineItems = document.querySelectorAll('.timeline-item');
+                console.log('📋 All timeline items found:', allTimelineItems.length);
+                allTimelineItems.forEach((item, index) => {
+                    console.log(`   Item ${index}:`, item.className);
+                });
+
+                // Debug: Check specific phase
+                const phaseItem = document.querySelector(`.timeline-item.${targetPhase}`);
+                console.log(`🎯 Phase item (.timeline-item.${targetPhase}) found:`, !!phaseItem);
+
+                if (phaseItem) {
+                    console.log('✅ Phase item classes:', phaseItem.className);
+
+                    // Debug: Check for expand trigger within phase
+                    const expandTrigger = phaseItem.querySelector('.expand-trigger');
+                    console.log('🔘 Expand trigger within phase found:', !!expandTrigger);
+
+                    if (expandTrigger) {
+                        console.log('✅ Expand trigger classes:', expandTrigger.className);
+                        console.log('✅ Expand trigger onclick:', expandTrigger.getAttribute('onclick'));
+
+                        // Check if already active
+                        const isActive = expandTrigger.classList.contains('active');
+                        console.log('🔄 Already active?', isActive);
+
+                        if (!isActive) {
+                            console.log('🎬 Attempting to click expand trigger...');
+
+                            // Try multiple click methods
+                            try {
+                                // Method 1: Direct click
+                                expandTrigger.click();
+                                console.log('✅ Method 1 (click) executed');
+
+                                // Method 2: Dispatch click event
+                                const clickEvent = new MouseEvent('click', {
+                                    bubbles: true,
+                                    cancelable: true,
+                                    view: window
+                                });
+                                expandTrigger.dispatchEvent(clickEvent);
+                                console.log('✅ Method 2 (dispatchEvent) executed');
+
+                                // Method 3: Manual toggle (fallback)
+                                expandTrigger.classList.add('active');
+                                const expandContent = expandTrigger.nextElementSibling;
+                                if (expandContent) {
+                                    expandContent.classList.add('active');
+                                    console.log('✅ Method 3 (manual toggle) executed');
+                                }
+
+                            } catch (error) {
+                                console.error('❌ Error clicking expand trigger:', error);
+                            }
+
+                            // Smooth scroll to the expanded section
+                            setTimeout(() => {
+                                console.log('📍 Attempting smooth scroll...');
+
+                                try {
+                                    expandTrigger.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'center'
+                                    });
+                                    console.log('✅ Smooth scroll executed');
+                                } catch (error) {
+                                    console.error('❌ Error during scroll:', error);
+                                }
+                            }, 500); // Increased delay
+
+                        } else {
+                            console.log('ℹ️ Expand trigger already active, just scrolling...');
+                            expandTrigger.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+                    } else {
+                        console.error('❌ Expand trigger not found within phase item');
+                    }
+                } else {
+                    console.error('❌ Phase item not found');
+
+                    // Fallback: Try direct selector
+                    const directTargetElement = document.querySelector(`.timeline-item.${targetPhase} .expand-trigger`);
+                    console.log('🔄 Direct selector result:', !!directTargetElement);
                 }
-            }, 200);
+            }, 500); // Increased delay to 500ms
+        } else {
+            console.log('ℹ️ No target phase specified');
         }
     },
 
@@ -530,11 +619,21 @@ window.switchTab = function (tabId) {
 
 // Global function for timeline phase navigation (NEW FEATURE)
 window.navigateToTimelinePhase = function (phaseId) {
+    console.log('🚀 navigateToTimelinePhase called with:', phaseId);
+
     // Switch to timeline tab
+    console.log('📱 Switching to timeline tab...');
     TabManager.switchTab('timeline');
 
     // Store the target phase for auto-expansion after tab loads
     sessionStorage.setItem('targetPhase', phaseId);
+    console.log('💾 Stored targetPhase in sessionStorage:', phaseId);
+
+    // Additional debugging: Check if the phase ID is valid
+    const validPhases = ['phase1', 'phase2', 'phase3', 'phase4'];
+    if (!validPhases.includes(phaseId)) {
+        console.warn('⚠️ Invalid phase ID:', phaseId, 'Valid phases:', validPhases);
+    }
 };
 
 // Export TabManager to global scope
