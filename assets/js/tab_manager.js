@@ -1,18 +1,18 @@
 // Tab Manager for Office Environmental Monitor
 
 const TabManager = {
-    
+
     currentTab: 'summary',
     validTabs: ['summary', 'technical', 'timeline', 'status'],
     isTransitioning: false,
-    
+
     /**
      * Initialize tab manager
      */
     init() {
         this.bindEvents();
         this.handleInitialLoad();
-        
+
         // Listen for content loaded events
         Utils.events.on('contentLoaded', (data) => {
             this.onContentLoaded(data);
@@ -48,24 +48,24 @@ const TabManager = {
         // Update UI state with enhanced animations
         this.updateTabButtons(tabId);
         this.updateURL(tabId);
-        
+
         // Add transition effect to content area
         this.startContentTransition(() => {
             // Load content
             ContentLoader.loadTabContent(tabId);
-            
+
             // Update current tab
             this.currentTab = tabId;
-            
+
             // Scroll to top with enhanced smoothness
-            window.scrollTo({ 
-                top: 0, 
+            window.scrollTo({
+                top: 0,
                 behavior: 'smooth'
             });
-            
+
             // Emit tab change event with more data
-            Utils.events.emit('tabChanged', { 
-                from: previousTab, 
+            Utils.events.emit('tabChanged', {
+                from: previousTab,
                 to: tabId,
                 timestamp: Date.now()
             });
@@ -83,16 +83,16 @@ const TabManager = {
      */
     startContentTransition(callback) {
         const contentArea = document.getElementById('tab-content-area');
-        
+
         if (contentArea) {
             // Add fade-out class
             contentArea.style.opacity = '0';
             contentArea.style.transform = 'translateY(10px)';
-            
+
             // Execute callback after fade-out
             setTimeout(() => {
                 callback();
-                
+
                 // Fade-in after content loads
                 setTimeout(() => {
                     contentArea.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -112,24 +112,24 @@ const TabManager = {
      */
     updateTabButtons(activeTabId) {
         const buttons = document.querySelectorAll('.tab-button');
-        
+
         buttons.forEach(button => {
             const tabId = button.getAttribute('data-tab');
-            
+
             if (tabId === activeTabId) {
                 // Enhanced activation animation
                 button.classList.remove('active');
-                
+
                 // Force reflow for animation
                 button.offsetHeight;
-                
+
                 // Add active class with animation
                 button.classList.add('active');
                 button.setAttribute('aria-selected', 'true');
-                
+
                 // Add ripple effect
                 this.addRippleEffect(button);
-                
+
             } else {
                 button.classList.remove('active');
                 button.setAttribute('aria-selected', 'false');
@@ -151,14 +151,14 @@ const TabManager = {
         // Create ripple element
         const ripple = document.createElement('span');
         ripple.className = 'ripple';
-        
+
         // Position ripple
         const rect = button.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = (rect.width / 2 - size / 2) + 'px';
         ripple.style.top = (rect.height / 2 - size / 2) + 'px';
-        
+
         // Add ripple styles
         ripple.style.position = 'absolute';
         ripple.style.borderRadius = '50%';
@@ -166,12 +166,12 @@ const TabManager = {
         ripple.style.transform = 'scale(0)';
         ripple.style.animation = 'ripple 0.6s ease-out';
         ripple.style.pointerEvents = 'none';
-        
+
         // Add to button
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
         button.appendChild(ripple);
-        
+
         // Remove ripple after animation
         setTimeout(() => {
             ripple.remove();
@@ -193,7 +193,7 @@ const TabManager = {
     handleInitialLoad() {
         const hash = window.location.hash.replace('#', '');
         const initialTab = this.validTabs.includes(hash) ? hash : 'summary';
-        
+
         // Set initial state without triggering content load
         // (ContentLoader handles initial load)
         this.updateTabButtons(initialTab);
@@ -206,7 +206,7 @@ const TabManager = {
     handleHashChange() {
         const hash = window.location.hash.replace('#', '');
         const targetTab = this.validTabs.includes(hash) ? hash : 'summary';
-        
+
         if (targetTab !== this.currentTab) {
             this.switchTab(targetTab);
         }
@@ -222,10 +222,10 @@ const TabManager = {
             if (tabButton) {
                 e.preventDefault();
                 const tabId = tabButton.getAttribute('data-tab');
-                
+
                 // Add visual feedback
                 this.addClickFeedback(tabButton);
-                
+
                 // Switch tab
                 this.switchTab(tabId);
             }
@@ -246,7 +246,7 @@ const TabManager = {
             if (e.target.matches('a[href^="#"]')) {
                 e.preventDefault();
                 const href = e.target.getAttribute('href').replace('#', '');
-                
+
                 if (this.validTabs.includes(href)) {
                     this.switchTab(href);
                 }
@@ -263,7 +263,7 @@ const TabManager = {
      */
     addClickFeedback(button) {
         button.style.transform = 'scale(0.95)';
-        
+
         setTimeout(() => {
             button.style.transform = '';
         }, 100);
@@ -297,22 +297,22 @@ const TabManager = {
         if (e.target.classList.contains('tab-button')) {
             const buttons = Array.from(document.querySelectorAll('.tab-button'));
             const currentIndex = buttons.indexOf(e.target);
-            
+
             let nextIndex;
-            
+
             switch (e.key) {
                 case 'ArrowLeft':
                     e.preventDefault();
                     nextIndex = currentIndex > 0 ? currentIndex - 1 : buttons.length - 1;
                     buttons[nextIndex].focus();
                     break;
-                    
+
                 case 'ArrowRight':
                     e.preventDefault();
                     nextIndex = currentIndex < buttons.length - 1 ? currentIndex + 1 : 0;
                     buttons[nextIndex].focus();
                     break;
-                    
+
                 case 'Enter':
                 case ' ':
                     e.preventDefault();
@@ -321,7 +321,7 @@ const TabManager = {
                     break;
             }
         }
-        
+
         // Quick tab switching with number keys (1-4)
         if (e.ctrlKey || e.metaKey) {
             const num = parseInt(e.key);
@@ -342,7 +342,7 @@ const TabManager = {
     onContentLoaded(data) {
         // Add any post-load functionality here
         this.enhanceLoadedContent(data.tabId);
-        
+
         // Apply entrance animations to new content
         this.animateContentEntrance();
     },
@@ -369,7 +369,7 @@ const TabManager = {
                 child.style.opacity = '0';
                 child.style.transform = 'translateY(20px)';
                 child.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                
+
                 setTimeout(() => {
                     child.style.opacity = '1';
                     child.style.transform = 'translateY(0)';
@@ -398,7 +398,7 @@ const TabManager = {
 
         // Add intersection observer for animations
         this.addScrollAnimations();
-        
+
         // Setup cross-tab navigation links
         this.setupCrossTabLinks();
     },
@@ -415,7 +415,7 @@ const TabManager = {
                 // Extract tab ID from onclick attribute
                 const onclickAttr = link.getAttribute('onclick');
                 const match = onclickAttr.match(/switchTab\(['"]([^'"]+)['"]\)/);
-                
+
                 if (match) {
                     const targetTab = match[1];
                     // Add enhanced click handler
@@ -433,7 +433,7 @@ const TabManager = {
      */
     addScrollAnimations() {
         const cards = document.querySelectorAll('.card, .metric-card, .arch-box, .timeline-content');
-        
+
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -492,6 +492,9 @@ const TabManager = {
 };
 
 // Global function for backward compatibility and easy access
-window.switchTab = function(tabId) {
+window.switchTab = function (tabId) {
     TabManager.switchTab(tabId);
 };
+
+// Export TabManager to global scope (ADD THIS LINE)
+window.TabManager = TabManager;
