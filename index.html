@@ -13,27 +13,37 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <h1>Office Environmental Monitor - an ATVISE Project</h1>
-        <div class="subtitle">
-            <span id="dynamic-subtitle">Project Summary</span>
+        <div class="header-content">
+            <h1>Office Environmental Monitor - an ATVISE Project</h1>
+            <div class="author-info">
+                by <a href="https://www.linkedin.com/in/john-gullu" target="_blank" class="author-link">John Gullu</a> - Tesla Control Internship
+            </div>
+        </div>
+        
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="en" title="English">EN</button>
+            <button class="lang-btn" data-lang="tr" title="Türkçe">TR</button>
         </div>
     </header>
 
     <!-- Tab Navigation -->
     <nav class="tab-navigation">
-        <div class="tab-container">
-            <button class="tab-button active" data-tab="summary" data-subtitle="Project Summary">
-                📊 Project Summary
-            </button>
-            <button class="tab-button" data-tab="technical" data-subtitle="Technical Architecture">
-                🏗️ Technical Architecture
-            </button>
-            <button class="tab-button" data-tab="timeline" data-subtitle="Development Timeline">
-                📅 Development Timeline
-            </button>
-            <button class="tab-button" data-tab="status" data-subtitle="System Status">
-                ⚡ System Status
-            </button>
+        <div class="tab-container-wrapper">
+            <div class="tab-container">
+                <button class="tab-button active" data-tab="summary" data-subtitle="Project Summary">
+                    📊 Project Summary
+                </button>
+                <button class="tab-button" data-tab="technical" data-subtitle="Technical Architecture">
+                    🏗️ Technical Architecture
+                </button>
+                <button class="tab-button" data-tab="timeline" data-subtitle="Development Timeline">
+                    📅 Development Timeline
+                </button>
+                <button class="tab-button" data-tab="status" data-subtitle="System Status">
+                    ⚡ System Status
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -44,7 +54,7 @@
             <!-- Loading indicator -->
             <div class="loading-indicator">
                 <div class="loading-spinner"></div>
-                <p>Loading content...</p>
+                <p data-lang-key="loading">Loading content...</p>
             </div>
         </div>
     </main>
@@ -57,6 +67,10 @@
     <!-- Initialize Application -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize language system first
+            if (typeof LanguageManager !== 'undefined') {
+                LanguageManager.init();
+            }
             ContentLoader.init();
             TabManager.init();
         });
