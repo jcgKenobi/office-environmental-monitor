@@ -1,7 +1,6 @@
 # Office Environmental Monitor - ATVISE SCADA Project
 
-**🌐 Live Website:** https://yourusername.github.io/office-environmental-monitor
-
+**🌐 Live Website:**  https://jcgkenobi.github.io/office-environmental-monitor/
 > Professional ATVISE SCADA environmental monitoring system developed during industrial automation internship, demonstrating comprehensive three-layer monitoring architecture with professional alarm management and ModBus RTU to OPC UA communication.
 
 ## 🎯 Project Overview
